@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Quiron AM — PM Dashboard · 17/04/2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0efe8;color:#1a1a18;font-size:13px;line-height:1.5}
+.page{max-width:940px;margin:0 auto;padding:1.25rem 1rem 3rem}
+header{margin-bottom:1rem}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.logo{width:34px;height:34px;background:#1a1a18;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;flex-shrink:0}
+.brand-name{font-size:16px;font-weight:500}
+.brand-sub{font-size:10px;color:#888780;margin-top:1px}
+.dbadge{background:#fff;border:1px solid #d3d1c7;border-radius:7px;padding:4px 11px;font-size:10px;color:#888780;white-space:nowrap}
+.alert{border-radius:8px;padding:7px 13px;font-size:11px;margin-bottom:1rem;display:none}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1rem}
+.kpi{background:#fff;border:1px solid #d3d1c7;border-radius:9px;padding:.8rem}
+.kl{font-size:10px;color:#888780;margin-bottom:3px}
+.kv{font-size:18px;font-weight:500}
+.ks{font-size:10px;color:#888780;margin-top:1px}
+.kdown .kv{color:#a32d2d}.kup .kv{color:#3b6d11}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px}
+.card{background:#fff;border:1px solid #d3d1c7;border-radius:9px;padding:1rem}
+.ct{font-size:12px;font-weight:500;margin-bottom:3px}
+.cs{font-size:10px;color:#888780;margin-bottom:9px}
+.psel{display:flex;gap:5px;margin-bottom:12px}
+.ps{padding:4px 11px;font-size:11px;border:1px solid #d3d1c7;border-radius:6px;background:none;color:#888780;cursor:pointer}
+.ps.on{background:#1a1a18;color:#fff;border-color:#1a1a18}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{padding:4px 7px;text-align:left;font-weight:400;color:#888780;border-bottom:1px solid #d3d1c7;white-space:nowrap}
+th.r{text-align:right}
+td{padding:4px 7px;border-bottom:1px solid #f0efe8;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:500}
+.bg{background:#eaf3de;color:#27500a}.br{background:#fcebeb;color:#791f1f}.by{background:#faeeda;color:#633806}.bn{background:#f0efe8;color:#5f5e5a}
+.hmc{display:inline-block;min-width:52px;padding:3px 6px;border-radius:4px;text-align:center;font-size:11px;font-weight:500}
+.delta-row{display:flex;flex-direction:column;gap:2px;margin-bottom:9px}
+.delta-lbl{display:flex;justify-content:space-between;font-size:11px}
+.delta-track{position:relative;height:12px;background:#f0efe8;border-radius:3px}
+.delta-zero{position:absolute;top:0;bottom:0;width:1px;background:#b4b2a9}
+.delta-bar{position:absolute;top:1px;height:10px;border-radius:2px}
+.note{font-size:10px;color:#b4b2a9;margin-top:7px}
+.concl{background:#fff;border:1px solid #d3d1c7;border-radius:9px;padding:1rem;margin-bottom:11px}
+.concl-title{font-size:12px;font-weight:500;margin-bottom:10px}
+.bullet{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #f0efe8;font-size:11px;line-height:1.5}
+.bullet:last-child{border-bottom:none}
+.bicon{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px}
+.b-alert{background:#fcebeb;color:#791f1f}
+.b-opp{background:#eaf3de;color:#27500a}
+.b-warn{background:#faeeda;color:#633806}
+.bullet b{font-weight:500}
+canvas{display:block;width:100%}
+footer{text-align:center;font-size:10px;color:#b4b2a9;margin-top:1.5rem}
+@media(max-width:620px){.kpis{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+</style></head><body>
+<div class="page">
+<header>
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:9px">
+    <div class="logo">Q</div>
+    <div><div class="brand-name">Quiron Asset Management</div><div class="brand-sub">Portfolio Manager Dashboard</div></div>
+  </div>
+  <div class="dbadge">17/04/2026</div>
+</div>
+</header>
+
+<div class="alert" id="aum-alert" style="display:none;background:#fcebeb;border:1px solid #f09595;color:#791f1f">
+  ⚠ <b>AUM cayó 0.1%</b> respecto al día anterior ($-24K menos).
+</div>
+
+<div class="kpis">
+  <div class="kpi ">
+    <div class="kl">AUM total hoy</div>
+    <div class="kv">$35.2M</div>
+    <div class="ks">vs $35.2M ayer (-0.1%)</div>
+  </div>
+  <div class="kpi">
+    <div class="kl">Fondos activos</div>
+    <div class="kv">9</div>
+    <div class="ks">con patrimonio &gt; 0</div>
+  </div>
+  <div class="kpi kup">
+    <div class="kl">Mejor fondo (año)</div>
+    <div class="kv" style="font-size:13px">Quiron Savings</div>
+    <div class="ks">+12.11% · pctil 71°</div>
+  </div>
+  <div class="kpi kdown">
+    <div class="kl">Más rezagado (año)</div>
+    <div class="kv" style="font-size:13px">Quiron Renta Mixta</div>
+    <div class="ks">-10.19% · pctil 3°</div>
+  </div>
+</div>
+
+<div class="grid2">
+<div class="card">
+  <div class="ct">Composición del AUM</div>
+  <canvas id="c-donut" style="height:200px"></canvas>
+  <div id="dleg" style="margin-top:9px;display:flex;flex-wrap:wrap;gap:7px;font-size:10px;color:#444"></div>
+</div>
+<div class="card">
+  <div class="ct">Posición por AUM dentro de la categoría y moneda</div>
+  <div id="fund-pills"></div>
+</div>
+</div>
+
+<div class="card" style="margin-bottom:11px">
+  <div class="ct">Rendimiento vs benchmark (mediana de categoría)</div>
+  <div class="cs">Verde = supera la mediana · Rojo = por debajo</div>
+  <div class="psel">
+    <button class="ps on" onclick="setHM('dia',this)">Hoy</button>
+    <button class="ps" onclick="setHM('mes',this)">Mes</button>
+    <button class="ps" onclick="setHM('anio',this)">Año</button>
+    <button class="ps" onclick="setHM('doce',this)">12 meses</button>
+  </div>
+  <div style="overflow-x:auto">
+  <table id="hm-table">
+    <thead><tr><th>Fondo</th><th class="r">AUM</th><th class="r">Quiron</th><th class="r">Mediana</th><th class="r">Δ</th><th class="r">Ranking</th><th class="r">Percentil</th></tr></thead>
+    <tbody id="hm-body"></tbody>
+  </table>
+  </div>
+  <div class="note">Benchmark = mediana de todos los fondos de la misma categoría y moneda (outliers &gt;200% excluidos).</div>
+</div>
+
+<div class="card" style="margin-bottom:11px">
+  <div class="ct">Diferencial vs benchmark</div>
+  <div class="psel">
+    <button class="ps on" onclick="setD('dia',this)">Hoy</button>
+    <button class="ps" onclick="setD('mes',this)">Mes</button>
+    <button class="ps" onclick="setD('anio',this)">Año</button>
+    <button class="ps" onclick="setD('doce',this)">12 meses</button>
+  </div>
+  <div id="delta-chart"></div>
+</div>
+
+<div class="concl">
+  <div class="concl-title">Conclusiones del día — Alertas y oportunidades</div>
+  <div class="bullet">
+  <div class="bicon b-alert">!</div>
+  <div style="flex:1"><b>Quiron Fixed Income en terreno negativo:</b> acumula -4.64% en el año (pctil 8° de su categoría). Evaluar si la estrategia justifica mantenerlo o si conviene una revisión del posicionamiento.</div>
+</div>
+<div class="bullet">
+  <div class="bicon b-alert">!</div>
+  <div style="flex:1"><b>Quiron Renta Mixta en terreno negativo:</b> acumula -10.19% en el año (pctil 3° de su categoría). Evaluar si la estrategia justifica mantenerlo o si conviene una revisión del posicionamiento.</div>
+</div>
+<div class="bullet">
+  <div class="bicon b-warn">~</div>
+  <div style="flex:1"><b>Quiron Agro Pymes muy por debajo de la mediana:</b> rinde +6.33% en el año vs mediana de categoría +8.55% (diferencia -2.21pp, pctil 13°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
+</div>
+<div class="bullet">
+  <div class="bicon b-warn">~</div>
+  <div style="flex:1"><b>Quiron Pymes Capital Plus muy por debajo de la mediana:</b> rinde +3.76% en el año vs mediana de categoría +8.55% (diferencia -4.78pp, pctil 5°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
+</div>
+<div class="bullet">
+  <div class="bicon b-opp">+</div>
+  <div style="flex:1"><b>Oportunidad comercial — Quiron PYMEs:</b> rendimiento en el año en el pctil 97° de su categoría pero ocupa el puesto 57°/68 por AUM. El track record justifica una campaña activa de captación.</div>
+</div>
+
+</div>
+<footer>Quiron Asset Management · Dashboard interno · 17/04/2026 · CAFCI · Tipo de cambio MEP: $1,406 ARS/USD (fuente: DolarApi.com) · Valores sujetos a revisión</footer>
+</div>
+
+<script>
+const DPR=window.devicePixelRatio||1;
+const FUNDS=[{"n": "Quiron Agro Pymes", "tipo": "PyMEs", "mon": "ARS", "aum": 552, "color": "#3266ad", "aum_pct": 4, "dia": 0.006, "mes": 0.82, "anio": 6.334, "doce": 29.869, "b_dia": 0.076, "b_mes": 1.137, "b_anio": 8.548, "b_doce": 37.146, "pct_dia": 10, "pct_mes": 16, "pct_anio": 13, "pct_doce": 15, "rank_dia": 57, "rank_mes": 53, "rank_anio": 55, "rank_doce": 51, "n_dia": 63, "n_mes": 63, "n_anio": 63, "n_doce": 60, "aum_rank": 60, "aum_n": 68}, {"n": "Quiron Fixed Income", "tipo": "Renta Fija", "mon": "ARS", "aum": 1209, "color": "#1d9e75", "aum_pct": 9, "dia": -0.596, "mes": -0.639, "anio": -4.644, "doce": 18.002, "b_dia": 0.135, "b_mes": 1.403, "b_anio": 9.823, "b_doce": 38.664, "pct_dia": 3, "pct_mes": 14, "pct_anio": 8, "pct_doce": 14, "rank_dia": 343, "rank_mes": 302, "rank_anio": 316, "rank_doce": 276, "n_dia": 354, "n_mes": 353, "n_anio": 341, "n_doce": 319, "aum_rank": 293, "aum_n": 384}, {"n": "Quiron Latam en U$S", "tipo": "Renta Mixta", "mon": "USD", "aum": 7888, "color": "#d85a30", "aum_pct": 61, "dia": -0.243, "mes": 3.006, "anio": 1.996, "doce": 6.419, "b_dia": -0.001, "b_mes": 0.807, "b_anio": 2.054, "b_doce": 7.553, "pct_dia": 8, "pct_mes": 84, "pct_anio": 47, "pct_doce": 39, "rank_dia": 34, "rank_mes": 6, "rank_anio": 19, "rank_doce": 17, "n_dia": 37, "n_mes": 37, "n_anio": 36, "n_doce": 28, "aum_rank": 21, "aum_n": 54}, {"n": "Quiron Money Market", "tipo": "Mercado de Dinero", "mon": "ARS", "aum": 5549, "color": "#639922", "aum_pct": 43, "dia": 0.051, "mes": 0.75, "anio": 6.268, "doce": 28.428, "b_dia": 0.053, "b_mes": 0.897, "b_anio": 7.326, "b_doce": 32.432, "pct_dia": 31, "pct_mes": 17, "pct_anio": 16, "pct_doce": 8, "rank_dia": 41, "rank_mes": 49, "rank_anio": 49, "rank_doce": 49, "n_dia": 59, "n_mes": 59, "n_anio": 58, "n_doce": 53, "aum_rank": 53, "aum_n": 67}, {"n": "Quiron Money Market USD", "tipo": "Mercado de Dinero", "mon": "USD", "aum": 1675, "color": "#7f77dd", "aum_pct": 13, "dia": 0.002, "mes": 0.057, "anio": null, "doce": null, "b_dia": 0.002, "b_mes": 0.035, "b_anio": 0.306, "b_doce": 1.432, "pct_dia": 65, "pct_mes": 83, "pct_anio": null, "pct_doce": null, "rank_dia": 9, "rank_mes": 4, "rank_anio": null, "rank_doce": null, "n_dia": 26, "n_mes": 24, "n_anio": 23, "n_doce": 16, "aum_rank": 25, "aum_n": 33}, {"n": "Quiron PYMEs", "tipo": "PyMEs", "mon": "ARS", "aum": 1831, "color": "#e8a838", "aum_pct": 14, "dia": 0.141, "mes": 1.776, "anio": 10.942, "doce": 43.561, "b_dia": 0.076, "b_mes": 1.137, "b_anio": 8.548, "b_doce": 37.146, "pct_dia": 92, "pct_mes": 98, "pct_anio": 97, "pct_doce": 92, "rank_dia": 5, "rank_mes": 1, "rank_anio": 2, "rank_doce": 5, "n_dia": 63, "n_mes": 63, "n_anio": 63, "n_doce": 60, "aum_rank": 57, "aum_n": 68}, {"n": "Quiron Pymes Capital Plus", "tipo": "PyMEs", "mon": "ARS", "aum": 46, "color": "#5c9bd1", "aum_pct": 0, "dia": 0.071, "mes": 0.986, "anio": 3.764, "doce": -4.225, "b_dia": 0.076, "b_mes": 1.137, "b_anio": 8.548, "b_doce": 37.146, "pct_dia": 43, "pct_mes": 27, "pct_anio": 5, "pct_doce": 2, "rank_dia": 36, "rank_mes": 46, "rank_anio": 60, "rank_doce": 59, "n_dia": 63, "n_mes": 63, "n_anio": 63, "n_doce": 60, "aum_rank": 62, "aum_n": 68}, {"n": "Quiron Renta Mixta", "tipo": "Renta Mixta", "mon": "ARS", "aum": 3511, "color": "#d4537e", "aum_pct": 27, "dia": 0.367, "mes": -4.341, "anio": -10.189, "doce": 23.022, "b_dia": 0.101, "b_mes": 1.114, "b_anio": 6.671, "b_doce": 36.339, "pct_dia": 86, "pct_mes": 2, "pct_anio": 3, "pct_doce": 18, "rank_dia": 29, "rank_mes": 206, "rank_anio": 194, "rank_doce": 146, "n_dia": 212, "n_mes": 211, "n_anio": 199, "n_doce": 178, "aum_rank": 164, "aum_n": 226}, {"n": "Quiron Savings", "tipo": "Renta Fija", "mon": "ARS", "aum": 12906, "color": "#b4b2a9", "aum_pct": 100, "dia": 0.334, "mes": 1.927, "anio": 12.109, "doce": 34.922, "b_dia": 0.135, "b_mes": 1.403, "b_anio": 9.823, "b_doce": 38.664, "pct_dia": 93, "pct_mes": 73, "pct_anio": 71, "pct_doce": 41, "rank_dia": 25, "rank_mes": 94, "rank_anio": 98, "rank_doce": 189, "n_dia": 354, "n_mes": 353, "n_anio": 341, "n_doce": 319, "aum_rank": 192, "aum_n": 384}];
+const TOTAL_AUM=35167053484;
+const PK={dia:['dia','b_dia','pct_dia','rank_dia','n_dia'],mes:['mes','b_mes','pct_mes','rank_mes','n_mes'],anio:['anio','b_anio','pct_anio','rank_anio','n_anio'],doce:['doce','b_doce','pct_doce','rank_doce','n_doce']};
+let hmP='dia',dP='dia';
+
+function fmt(v){if(v>=1e9)return'$'+(v/1e9).toFixed(1)+'B';return'$'+(v/1e6).toFixed(0)+'M';}
+function badge(p){if(p===null)return'<span class="badge bn">n/d</span>';if(p>=75)return`<span class="badge bg">pctil ${p}°</span>`;if(p>=40)return`<span class="badge by">pctil ${p}°</span>`;return`<span class="badge br">pctil ${p}°</span>`;}
+function hmColor(q,b){if(b===null)return'#f0efe8';const d=q-b;if(d>=0.5)return'#c0dd97';if(d>=0.1)return'#eaf3de';if(d>=-0.1)return'#f5f5f3';if(d>=-0.5)return'#f7c1c1';return'#f09595';}
+function hmTC(q,b){if(b===null)return'#5f5e5a';const d=q-b;if(d>=0.1)return'#27500a';if(d<=-0.1)return'#791f1f';return'#1a1a18';}
+
+// Donut
+function drawDonut(){
+const c=document.getElementById('c-donut');
+const W=c.parentElement.clientWidth-2,H=200;
+c.style.width=W+'px';c.style.height=H+'px';c.width=W*DPR;c.height=H*DPR;
+const ctx=c.getContext('2d');ctx.scale(DPR,DPR);
+const cx=W/2,cy=H/2,R=80,r=48;let ang=-Math.PI/2;
+FUNDS.forEach(f=>{const sl=f.aum/TOTAL_AUM*1e6*Math.PI*2;
+ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,ang,ang+sl);ctx.closePath();ctx.fillStyle=f.color;ctx.fill();
+ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,ang,ang+sl);ctx.closePath();ctx.fillStyle='#fff';ctx.fill();
+ang+=sl;});
+ctx.fillStyle='#1a1a18';ctx.font='500 14px -apple-system,sans-serif';ctx.textAlign='center';ctx.fillText(fmt(TOTAL_AUM),cx,cy+2);
+ctx.fillStyle='#888780';ctx.font='10px -apple-system,sans-serif';ctx.fillText('AUM total',cx,cy+14);
+document.getElementById('dleg').innerHTML=FUNDS.map(f=>`<span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:${f.color};flex-shrink:0"></span>${f.n.replace('Quiron ','').replace('Quiron','')||f.n} ${(f.aum/TOTAL_AUM*1e6*100).toFixed(1)}%</span>`).join('');}
+
+// Fund pills
+function buildPills(){
+document.getElementById('fund-pills').innerHTML=FUNDS.map(f=>
+`<div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f0efe8">
+  <div style="width:7px;height:7px;border-radius:2px;background:${f.color};flex-shrink:0"></div>
+  <div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.n}</div>
+  <div style="font-size:10px;color:#888780">${f.tipo} · ${f.mon}</div></div>
+  <div style="font-size:10px;color:#444;white-space:nowrap">${fmt(f.aum*1e6)}</div>
+  <span class="badge bn" style="white-space:nowrap;font-size:10px">${f.aum_rank!==null&&f.aum_n!==null?f.aum_rank+'°/'+f.aum_n:'n/d'}</span>
+</div>`).join('');}
+
+// Heatmap
+function setHM(p,btn){hmP=p;btn.closest('.psel').querySelectorAll('.ps').forEach(b=>b.classList.toggle('on',b===btn));renderHM();}
+function rankColor(r,n){if(r===null||n===null)return'#5f5e5a';const pct=r/n;if(pct<=0.25)return'#27500a';if(pct<=0.5)return'#633806';return'#791f1f';}
+function rankBg(r,n){if(r===null||n===null)return'#f0efe8';const pct=r/n;if(pct<=0.25)return'#eaf3de';if(pct<=0.5)return'#faeeda';return'#fcebeb';}
+function renderHM(){
+const [vk,bk,pk,rk,nk]=PK[hmP];
+document.getElementById('hm-body').innerHTML=FUNDS.map(f=>{
+const q=f[vk],b=f[bk],pv=f[pk],rv=f[rk],nv=f[nk];
+const diff=b!==null&&q!==null?q-b:null;
+const bg=hmColor(q,b);const tc=hmTC(q,b);const sign=diff!==null?(diff>=0?'+':''):'';
+const rankTxt=rv!==null&&nv!==null?`${rv}° de ${nv}`:'—';
+return`<tr>
+  <td><div style="font-size:11px;font-weight:500">${f.n}</div><div style="font-size:10px;color:#888780">${f.tipo} · ${f.mon}</div></td>
+  <td style="text-align:right;color:#444">${fmt(f.aum*1e6)}</td>
+  <td style="text-align:right"><span class="hmc" style="background:${bg};color:${tc}">${q!==null?q.toFixed(3)+'%':'—'}</span></td>
+  <td style="text-align:right;color:#888780">${b!==null?b.toFixed(3)+'%':'—'}</td>
+  <td style="text-align:right;font-weight:500;color:${diff!==null?(diff>=0?'#3b6d11':'#a32d2d'):'#888'}">${diff!==null?sign+diff.toFixed(3)+'%':'—'}</td>
+  <td style="text-align:right"><span class="hmc" style="background:${rankBg(rv,nv)};color:${rankColor(rv,nv)};min-width:60px">${rankTxt}</span></td>
+  <td style="text-align:right">${badge(pv)}</td>
+</tr>`;}).join('');}
+
+// Delta chart
+function setD(p,btn){dP=p;btn.closest('.psel').querySelectorAll('.ps').forEach(b=>b.classList.toggle('on',b===btn));renderDelta();}
+function renderDelta(){
+const [vk,bk]=PK[dP];
+const items=FUNDS.map(f=>{const d=f[bk]!==null&&f[vk]!==null?f[vk]-f[bk]:null;return{n:f.n,d,color:f.color};}).filter(x=>x.d!==null);
+const maxD=Math.max(...items.map(x=>Math.abs(x.d)))*1.1||1;
+document.getElementById('delta-chart').innerHTML=items.map(x=>{
+const p=Math.abs(x.d)/maxD*45;const pos=x.d>=0;const color=pos?'#639922':'#d85a30';
+return`<div class="delta-row">
+  <div class="delta-lbl"><span style="font-size:11px">${x.n}</span><span style="color:${color};font-weight:500">${pos?'+':''}${x.d.toFixed(3)}%</span></div>
+  <div class="delta-track"><div class="delta-zero" style="left:50%"></div>
+  <div class="delta-bar" style="left:${pos?50:50-p}%;width:${p}%;background:${color}"></div></div>
+</div>`;}).join('');}
+
+window.addEventListener('DOMContentLoaded',()=>{drawDonut();buildPills();renderHM();renderDelta();});
+window.addEventListener('resize',()=>drawDonut());
+</script></body></html>
