@@ -1,0 +1,60 @@
+name: Actualizar Dashboard CAFCI
+
+on:
+  # Ejecuta lunes a viernes a las 23:00 hs Argentina (UTC-3 = 02:00 UTC del día siguiente)
+  schedule:
+    - cron: '0 2 * * 2-6'   # 02:00 UTC martes-sábado = 23:00 ART lunes-viernes
+
+  # También permite correrlo manualmente desde GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: write   # necesario para hacer push de los HTML generados
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout del repositorio
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Configurar Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Instalar dependencias
+      - name: Instalar dependencias
+        run: pip install pandas openpyxl numpy
+
+      # 4. Correr el script de actualización
+      - name: Generar dashboards
+        run: python cafci_dashboard_update.py
+        continue-on-error: false
+
+      # 5. Copiar los HTML generados a la carpeta docs/ (GitHub Pages los sirve desde ahí)
+      - name: Mover archivos al directorio web
+        run: |
+          mkdir -p docs
+          # Copiar los dashboards generados hoy
+          cp dashboards/CAFCI_Dashboard_*.html docs/general.html 2>/dev/null || true
+          cp dashboards/Quiron_PM_Dashboard_*.html docs/quiron.html 2>/dev/null || true
+          # Guardar también una copia con fecha para historial
+          cp dashboards/CAFCI_Dashboard_*.html docs/ 2>/dev/null || true
+          cp dashboards/Quiron_PM_Dashboard_*.html docs/ 2>/dev/null || true
+
+      # 6. Generar el index.html con links a los dashboards
+      - name: Generar página de inicio
+        run: python generate_index.py
+
+      # 7. Commit y push de los archivos generados
+      - name: Commit dashboards actualizados
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Dashboard actualizado $(date +'%Y-%m-%d')"
+          git push
