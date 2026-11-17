@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Quiron AM — PM Dashboard · 14/11/2026</title>
+<title>Quiron AM — PM Dashboard · 17/11/2026</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0efe8;color:#1a1a18;font-size:13px;line-height:1.5}
@@ -60,19 +60,19 @@ footer{text-align:center;font-size:10px;color:#b4b2a9;margin-top:1.5rem}
     <div class="logo">Q</div>
     <div><div class="brand-name">Quiron Asset Management</div><div class="brand-sub">Portfolio Manager Dashboard</div></div>
   </div>
-  <div class="dbadge">14/11/2026</div>
+  <div class="dbadge">17/11/2026</div>
 </div>
 </header>
 
-<div class="alert" id="aum-alert" style="display:block;background:#eaf3de;border:1px solid #c0dd97;color:#27500a">
-  ✓ <b>AUM creció 20.4%</b> respecto al día anterior ($5.9M más).
+<div class="alert" id="aum-alert" style="display:block;background:#fcebeb;border:1px solid #f09595;color:#791f1f">
+  ⚠ <b>AUM cayó 2.2%</b> respecto al día anterior ($-788K menos).
 </div>
 
 <div class="kpis">
-  <div class="kpi kup">
+  <div class="kpi kdown">
     <div class="kl">AUM total hoy</div>
-    <div class="kv">$34.8M</div>
-    <div class="ks">vs $28.9M ayer (+20.4%)</div>
+    <div class="kv">$34.6M</div>
+    <div class="ks">vs $35.3M ayer (-2.2%)</div>
   </div>
   <div class="kpi">
     <div class="kl">Fondos activos</div>
@@ -82,12 +82,12 @@ footer{text-align:center;font-size:10px;color:#b4b2a9;margin-top:1.5rem}
   <div class="kpi kup">
     <div class="kl">Mejor fondo (año)</div>
     <div class="kv" style="font-size:13px">Quiron PYMEs</div>
-    <div class="ks">+29.69% · pctil 97°</div>
+    <div class="ks">+29.96% · pctil 96°</div>
   </div>
   <div class="kpi kdown">
     <div class="kl">Más rezagado (año)</div>
     <div class="kv" style="font-size:13px">Quiron Renta Mixta</div>
-    <div class="ks">-21.87% · pctil 30°</div>
+    <div class="ks">-24.57% · pctil 52°</div>
   </div>
 </div>
 
@@ -135,38 +135,46 @@ footer{text-align:center;font-size:10px;color:#b4b2a9;margin-top:1.5rem}
 <div class="concl">
   <div class="concl-title">Conclusiones del día — Alertas y oportunidades</div>
   <div class="bullet">
+  <div class="bicon b-warn">~</div>
+  <div style="flex:1"><b>Leve caída de AUM:</b> -2.2% respecto al día anterior. Monitorear si la tendencia se repite mañana.</div>
+</div>
+<div class="bullet">
   <div class="bicon b-alert">!</div>
-  <div style="flex:1"><b>Quiron Latam en U$S en terreno negativo:</b> acumula -6.89% en el año (pctil 5° de su categoría). Evaluar si la estrategia justifica mantenerlo o si conviene una revisión del posicionamiento.</div>
+  <div style="flex:1"><b>Quiron Latam en U$S en terreno negativo:</b> acumula -7.31% en el año (pctil 4° de su categoría). Evaluar si la estrategia justifica mantenerlo o si conviene una revisión del posicionamiento.</div>
 </div>
 <div class="bullet">
   <div class="bicon b-alert">!</div>
-  <div style="flex:1"><b>Quiron Renta Mixta en terreno negativo:</b> acumula -21.87% en el año (pctil 30° de su categoría). Evaluar si la estrategia justifica mantenerlo o si conviene una revisión del posicionamiento.</div>
+  <div style="flex:1"><b>Quiron Renta Mixta en terreno negativo:</b> acumula -24.57% en el año (pctil 52° de su categoría). Evaluar si la estrategia justifica mantenerlo o si conviene una revisión del posicionamiento.</div>
 </div>
 <div class="bullet">
   <div class="bicon b-warn">~</div>
-  <div style="flex:1"><b>Quiron Agro Pymes muy por debajo de la mediana:</b> rinde +17.74% en el año vs mediana de categoría +22.95% (diferencia -5.21pp, pctil 9°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
+  <div style="flex:1"><b>Quiron Agro Pymes muy por debajo de la mediana:</b> rinde +17.88% en el año vs mediana de categoría +23.22% (diferencia -5.34pp, pctil 9°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
 </div>
 <div class="bullet">
   <div class="bicon b-warn">~</div>
-  <div style="flex:1"><b>Quiron Fixed Income muy por debajo de la mediana:</b> rinde +6.43% en el año vs mediana de categoría +24.84% (diferencia -18.41pp, pctil 9°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
+  <div style="flex:1"><b>Quiron Fixed Income muy por debajo de la mediana:</b> rinde +6.59% en el año vs mediana de categoría +24.99% (diferencia -18.41pp, pctil 10°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
 </div>
 <div class="bullet">
   <div class="bicon b-warn">~</div>
-  <div style="flex:1"><b>Quiron Pymes Capital Plus muy por debajo de la mediana:</b> rinde +9.18% en el año vs mediana de categoría +22.95% (diferencia -13.76pp, pctil 3°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
+  <div style="flex:1"><b>Quiron Money Market muy por debajo de la mediana:</b> rinde +17.22% en el año vs mediana de categoría +19.84% (diferencia -2.62pp, pctil 12°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
+</div>
+<div class="bullet">
+  <div class="bicon b-warn">~</div>
+  <div style="flex:1"><b>Quiron Pymes Capital Plus muy por debajo de la mediana:</b> rinde +9.34% en el año vs mediana de categoría +23.22% (diferencia -13.88pp, pctil 4°). Posible punto de fricción con inversores institucionales que comparen contra benchmark.</div>
 </div>
 <div class="bullet">
   <div class="bicon b-opp">+</div>
-  <div style="flex:1"><b>Oportunidad comercial — Quiron PYMEs:</b> rendimiento en el año en el pctil 97° de su categoría pero ocupa el puesto 56°/66 por AUM. El track record justifica una campaña activa de captación.</div>
+  <div style="flex:1"><b>Oportunidad comercial — Quiron PYMEs:</b> rendimiento en el año en el pctil 96° de su categoría pero ocupa el puesto 56°/66 por AUM. El track record justifica una campaña activa de captación.</div>
 </div>
 
 </div>
-<footer>Quiron Asset Management · Dashboard interno · 14/11/2026 · CAFCI · Tipo de cambio MEP: $1,581 ARS/USD (fuente: DolarApi.com) · Valores sujetos a revisión</footer>
+<footer>Quiron Asset Management · Dashboard interno · 17/11/2026 · CAFCI · Tipo de cambio MEP: $1,589 ARS/USD (fuente: DolarApi.com) · Valores sujetos a revisión</footer>
 </div>
 
 <script>
 const DPR=window.devicePixelRatio||1;
-const FUNDS=[{"n": "Quiron Agro Pymes", "tipo": "PyMEs", "mon": "ARS", "aum": 502, "color": "#3266ad", "aum_pct": 5, "dia": 0.046, "mes": 0.65, "anio": 17.736, "doce": 22.264, "b_dia": 0.104, "b_mes": 0.804, "b_anio": 22.947, "b_doce": 28.562, "pct_dia": 10, "pct_mes": 12, "pct_anio": 9, "pct_doce": 9, "rank_dia": 55, "rank_mes": 53, "rank_anio": 53, "rank_doce": 53, "n_dia": 61, "n_mes": 60, "n_anio": 58, "n_doce": 58, "aum_rank": 59, "aum_n": 66}, {"n": "Quiron Fixed Income", "tipo": "Renta Fija", "mon": "ARS", "aum": 4205, "color": "#1d9e75", "aum_pct": 41, "dia": 0.177, "mes": 0.982, "anio": 6.434, "doce": 10.832, "b_dia": 0.207, "b_mes": 0.839, "b_anio": 24.84, "b_doce": 29.322, "pct_dia": 40, "pct_mes": 79, "pct_anio": 9, "pct_doce": 10, "rank_dia": 238, "rank_mes": 82, "rank_anio": 310, "rank_doce": 302, "n_dia": 396, "n_mes": 393, "n_anio": 341, "n_doce": 336, "aum_rank": 314, "aum_n": 431}, {"n": "Quiron Latam en U$S", "tipo": "Renta Fija", "mon": "USD", "aum": 10175, "color": "#d85a30", "aum_pct": 100, "dia": 0.043, "mes": -1.826, "anio": -6.888, "doce": -5.317, "b_dia": 0.016, "b_mes": -0.153, "b_anio": 2.472, "b_doce": 3.437, "pct_dia": 65, "pct_mes": 13, "pct_anio": 5, "pct_doce": 4, "rank_dia": 49, "rank_mes": 121, "rank_anio": 110, "rank_doce": 107, "n_dia": 139, "n_mes": 139, "n_anio": 116, "n_doce": 112, "aum_rank": 96, "aum_n": 199}, {"n": "Quiron Money Market", "tipo": "Mercado de Dinero", "mon": "ARS", "aum": 5492, "color": "#639922", "aum_pct": 54, "dia": null, "mes": null, "anio": null, "doce": null, "b_dia": 0.053, "b_mes": 0.775, "b_anio": 19.746, "b_doce": 22.92, "pct_dia": null, "pct_mes": null, "pct_anio": null, "pct_doce": null, "rank_dia": null, "rank_mes": null, "rank_anio": null, "rank_doce": null, "n_dia": 60, "n_mes": 60, "n_anio": 54, "n_doce": 53, "aum_rank": 58, "aum_n": 67}, {"n": "Quiron Money Market USD", "tipo": "Mercado de Dinero", "mon": "USD", "aum": 2462, "color": "#7f77dd", "aum_pct": 24, "dia": 0.0, "mes": 0.007, "anio": null, "doce": null, "b_dia": 0.003, "b_mes": 0.037, "b_anio": 0.781, "b_doce": 0.934, "pct_dia": 0, "pct_mes": 3, "pct_anio": null, "pct_doce": null, "rank_dia": 34, "rank_mes": 34, "rank_anio": null, "rank_doce": null, "n_dia": 35, "n_mes": 35, "n_anio": 24, "n_doce": 24, "aum_rank": 34, "aum_n": 40}, {"n": "Quiron PYMEs", "tipo": "PyMEs", "mon": "ARS", "aum": 1167, "color": "#e8a838", "aum_pct": 11, "dia": 0.038, "mes": 0.825, "anio": 29.694, "doce": 36.904, "b_dia": 0.104, "b_mes": 0.804, "b_anio": 22.947, "b_doce": 28.562, "pct_dia": 8, "pct_mes": 62, "pct_anio": 97, "pct_doce": 97, "rank_dia": 56, "rank_mes": 23, "rank_anio": 2, "rank_doce": 2, "n_dia": 61, "n_mes": 60, "n_anio": 58, "n_doce": 58, "aum_rank": 56, "aum_n": 66}, {"n": "Quiron Pesos Estrategia", "tipo": "Renta Fija", "mon": "ARS", "aum": 3430, "color": "#5c9bd1", "aum_pct": 34, "dia": 0.22, "mes": 0.877, "anio": null, "doce": null, "b_dia": 0.207, "b_mes": 0.839, "b_anio": 24.84, "b_doce": 29.322, "pct_dia": 54, "pct_mes": 55, "pct_anio": null, "pct_doce": null, "rank_dia": 183, "rank_mes": 177, "rank_anio": null, "rank_doce": null, "n_dia": 396, "n_mes": 393, "n_anio": 341, "n_doce": 336, "aum_rank": 322, "aum_n": 431}, {"n": "Quiron Plus", "tipo": "Renta Fija", "mon": "ARS", "aum": 596, "color": "#d4537e", "aum_pct": 6, "dia": 0.138, "mes": null, "anio": null, "doce": null, "b_dia": 0.207, "b_mes": 0.839, "b_anio": 24.84, "b_doce": 29.322, "pct_dia": 28, "pct_mes": null, "pct_anio": null, "pct_doce": null, "rank_dia": 285, "rank_mes": null, "rank_anio": null, "rank_doce": null, "n_dia": 396, "n_mes": 393, "n_anio": 341, "n_doce": 336, "aum_rank": 363, "aum_n": 431}, {"n": "Quiron Pymes Capital Plus", "tipo": "PyMEs", "mon": "ARS", "aum": 53, "color": "#b4b2a9", "aum_pct": 1, "dia": -0.091, "mes": 0.366, "anio": 9.182, "doce": 10.702, "b_dia": 0.104, "b_mes": 0.804, "b_anio": 22.947, "b_doce": 28.562, "pct_dia": 0, "pct_mes": 3, "pct_anio": 3, "pct_doce": 3, "rank_dia": 60, "rank_mes": 58, "rank_anio": 56, "rank_doce": 56, "n_dia": 61, "n_mes": 60, "n_anio": 58, "n_doce": 58, "aum_rank": 61, "aum_n": 66}, {"n": "Quiron Renta Mixta", "tipo": "Renta Variable", "mon": "ARS", "aum": 904, "color": "#888780", "aum_pct": 9, "dia": 2.221, "mes": -5.48, "anio": -21.874, "doce": -17.469, "b_dia": 2.79, "b_mes": -7.696, "b_anio": -20.923, "b_doce": -16.06, "pct_dia": 29, "pct_mes": 69, "pct_anio": 30, "pct_doce": 26, "rank_dia": 46, "rank_mes": 20, "rank_anio": 39, "rank_doce": 42, "n_dia": 65, "n_mes": 64, "n_anio": 56, "n_doce": 57, "aum_rank": 64, "aum_n": 73}, {"n": "Quiron Savings", "tipo": "Renta Fija", "mon": "ARS", "aum": 5859, "color": "#3266ad", "aum_pct": 58, "dia": 0.127, "mes": 1.092, "anio": 26.43, "doce": 29.785, "b_dia": 0.207, "b_mes": 0.839, "b_anio": 24.84, "b_doce": 29.322, "pct_dia": 25, "pct_mes": 89, "pct_anio": 60, "pct_doce": 52, "rank_dia": 295, "rank_mes": 43, "rank_anio": 136, "rank_doce": 161, "n_dia": 396, "n_mes": 393, "n_anio": 341, "n_doce": 336, "aum_rank": 281, "aum_n": 431}];
-const TOTAL_AUM=34843917864;
+const FUNDS=[{"n": "Quiron Agro Pymes", "tipo": "PyMEs", "mon": "ARS", "aum": 502, "color": "#3266ad", "aum_pct": 5, "dia": 0.119, "mes": 0.77, "anio": 17.875, "doce": 22.34, "b_dia": 0.141, "b_mes": 0.933, "b_anio": 23.216, "b_doce": 28.694, "pct_dia": 30, "pct_mes": 19, "pct_anio": 9, "pct_doce": 9, "rank_dia": 42, "rank_mes": 48, "rank_anio": 52, "rank_doce": 52, "n_dia": 60, "n_mes": 59, "n_anio": 57, "n_doce": 57, "aum_rank": 59, "aum_n": 66}, {"n": "Quiron Fixed Income", "tipo": "Renta Fija", "mon": "ARS", "aum": 3817, "color": "#1d9e75", "aum_pct": 38, "dia": 0.145, "mes": 1.129, "anio": 6.589, "doce": 11.029, "b_dia": 0.071, "b_mes": 0.91, "b_anio": 24.994, "b_doce": 29.082, "pct_dia": 71, "pct_mes": 83, "pct_anio": 10, "pct_doce": 12, "rank_dia": 114, "rank_mes": 66, "rank_anio": 308, "rank_doce": 294, "n_dia": 397, "n_mes": 394, "n_anio": 343, "n_doce": 336, "aum_rank": 316, "aum_n": 432}, {"n": "Quiron Latam en U$S", "tipo": "Renta Fija", "mon": "USD", "aum": 10102, "color": "#d85a30", "aum_pct": 100, "dia": -0.449, "mes": -2.267, "anio": -7.306, "doce": -6.113, "b_dia": -0.028, "b_mes": -0.181, "b_anio": 2.226, "b_doce": 3.128, "pct_dia": 8, "pct_mes": 15, "pct_anio": 4, "pct_doce": 4, "rank_dia": 125, "rank_mes": 116, "rank_anio": 109, "rank_doce": 106, "n_dia": 136, "n_mes": 136, "n_anio": 114, "n_doce": 110, "aum_rank": 97, "aum_n": 200}, {"n": "Quiron Money Market", "tipo": "Mercado de Dinero", "mon": "ARS", "aum": 6284, "color": "#639922", "aum_pct": 62, "dia": 0.108, "mes": 0.695, "anio": 17.218, "doce": 20.298, "b_dia": 0.157, "b_mes": 0.927, "b_anio": 19.839, "b_doce": 22.994, "pct_dia": 6, "pct_mes": 8, "pct_anio": 12, "pct_doce": 11, "rank_dia": 58, "rank_mes": 57, "rank_anio": 49, "rank_doce": 49, "n_dia": 62, "n_mes": 62, "n_anio": 56, "n_doce": 55, "aum_rank": 58, "aum_n": 67}, {"n": "Quiron Money Market USD", "tipo": "Mercado de Dinero", "mon": "USD", "aum": 2454, "color": "#7f77dd", "aum_pct": 24, "dia": 0.0, "mes": 0.007, "anio": null, "doce": null, "b_dia": 0.009, "b_mes": 0.045, "b_anio": 0.784, "b_doce": 0.935, "pct_dia": 0, "pct_mes": 3, "pct_anio": null, "pct_doce": null, "rank_dia": 35, "rank_mes": 35, "rank_anio": null, "rank_doce": null, "n_dia": 36, "n_mes": 36, "n_anio": 25, "n_doce": 25, "aum_rank": 34, "aum_n": 40}, {"n": "Quiron PYMEs", "tipo": "PyMEs", "mon": "ARS", "aum": 1169, "color": "#e8a838", "aum_pct": 12, "dia": 0.206, "mes": 1.033, "anio": 29.962, "doce": 37.185, "b_dia": 0.141, "b_mes": 0.933, "b_anio": 23.216, "b_doce": 28.694, "pct_dia": 92, "pct_mes": 83, "pct_anio": 96, "pct_doce": 96, "rank_dia": 5, "rank_mes": 10, "rank_anio": 2, "rank_doce": 2, "n_dia": 60, "n_mes": 59, "n_anio": 57, "n_doce": 57, "aum_rank": 56, "aum_n": 66}, {"n": "Quiron Pesos Estrategia", "tipo": "Renta Fija", "mon": "ARS", "aum": 3432, "color": "#5c9bd1", "aum_pct": 34, "dia": 0.056, "mes": 0.933, "anio": null, "doce": null, "b_dia": 0.071, "b_mes": 0.91, "b_anio": 24.994, "b_doce": 29.082, "pct_dia": 45, "pct_mes": 52, "pct_anio": null, "pct_doce": null, "rank_dia": 217, "rank_mes": 189, "rank_anio": null, "rank_doce": null, "n_dia": 397, "n_mes": 394, "n_anio": 343, "n_doce": 336, "aum_rank": 320, "aum_n": 432}, {"n": "Quiron Plus", "tipo": "Renta Fija", "mon": "ARS", "aum": 597, "color": "#d4537e", "aum_pct": 6, "dia": 0.173, "mes": null, "anio": null, "doce": null, "b_dia": 0.071, "b_mes": 0.91, "b_anio": 24.994, "b_doce": 29.082, "pct_dia": 79, "pct_mes": null, "pct_anio": null, "pct_doce": null, "rank_dia": 83, "rank_mes": null, "rank_anio": null, "rank_doce": null, "n_dia": 397, "n_mes": 394, "n_anio": 343, "n_doce": 336, "aum_rank": 363, "aum_n": 432}, {"n": "Quiron Pymes Capital Plus", "tipo": "PyMEs", "mon": "ARS", "aum": 53, "color": "#b4b2a9", "aum_pct": 1, "dia": 0.146, "mes": 0.513, "anio": 9.341, "doce": 11.055, "b_dia": 0.141, "b_mes": 0.933, "b_anio": 23.216, "b_doce": 28.694, "pct_dia": 53, "pct_mes": 7, "pct_anio": 4, "pct_doce": 4, "rank_dia": 28, "rank_mes": 55, "rank_anio": 55, "rank_doce": 55, "n_dia": 60, "n_mes": 59, "n_anio": 57, "n_doce": 57, "aum_rank": 61, "aum_n": 66}, {"n": "Quiron Renta Mixta", "tipo": "Renta Variable", "mon": "ARS", "aum": 873, "color": "#888780", "aum_pct": 9, "dia": -3.445, "mes": -8.736, "anio": -24.566, "doce": -22.727, "b_dia": -5.185, "b_mes": -12.704, "b_anio": -24.863, "b_doce": -23.014, "pct_dia": 83, "pct_mes": 78, "pct_anio": 52, "pct_doce": 54, "rank_dia": 11, "rank_mes": 14, "rank_anio": 27, "rank_doce": 26, "n_dia": 64, "n_mes": 63, "n_anio": 56, "n_doce": 56, "aum_rank": 64, "aum_n": 73}, {"n": "Quiron Savings", "tipo": "Renta Fija", "mon": "ARS", "aum": 5275, "color": "#3266ad", "aum_pct": 52, "dia": 0.117, "mes": 1.211, "anio": 26.578, "doce": 29.802, "b_dia": 0.071, "b_mes": 0.91, "b_anio": 24.994, "b_doce": 29.082, "pct_dia": 65, "pct_mes": 91, "pct_anio": 61, "pct_doce": 52, "rank_dia": 137, "rank_mes": 34, "rank_anio": 134, "rank_doce": 160, "n_dia": 397, "n_mes": 394, "n_anio": 343, "n_doce": 336, "aum_rank": 290, "aum_n": 432}];
+const TOTAL_AUM=34558726498;
 const PK={dia:['dia','b_dia','pct_dia','rank_dia','n_dia'],mes:['mes','b_mes','pct_mes','rank_mes','n_mes'],anio:['anio','b_anio','pct_anio','rank_anio','n_anio'],doce:['doce','b_doce','pct_doce','rank_doce','n_doce']};
 let hmP='dia',dP='dia';
 
